@@ -1,0 +1,19 @@
+<html>
+<body>
+ <?php
+		session_start();
+		
+	$con = mysqli_connect("localhost","root","mukta3396","plethora");
+	$check="SELECT * FROM Item LIMIT 9";
+	
+	$result = mysqli_query ($check) or die (mysqli_error ());
+	$row = mysqli_fetch_array($result); ?>
+
+            <ul>
+                <li> <?php echo $row['price'];?> </li>
+                <li>abhfb</li>
+            </ul>
+            
+    <?php mysqli_close($con); ?>
+</body>
+</html>

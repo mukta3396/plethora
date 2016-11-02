@@ -1,0 +1,46 @@
+
+<?php
+session_start();
+$con = mysqli_connect("localhost","root","mukta3396","plethora");
+// Check connection
+
+if (mysqli_connect_errno())
+{
+echo "<script> window.history.go(-1); </script>";
+}
+$check="SELECT * FROM Login WHERE uname='$_POST[uname]' and password='$POST[password]'";
+$result4=mysqli_query($con,$check);
+		 $rowcount=mysqli_num_rows($result4);
+		 if($rowcount >0)
+		 {
+  			$_SESSION['Success'] = "Successfully Logged In!";
+  			$address= $_POST[street] . ", " .  $_POST[city] . ", " . $_POST[state] . ", " . $_POST[zip] . ", " . $_POST[country] ;
+			$id=date("Y-m-d");
+			$sql1 = "INSERT INTO PlaceOrder (o_date, address)
+			VALUES
+			('$id','$address')";
+			mysqli_query($con,$sql1);
+
+			$sql2="SELECT o_id FROM PlaceOrder ORDER BY o_id DESC LIMIT 1";
+			$result1=mysqli_query($con,$sql2);
+			$row1=mysqli_fetch_array($result1,MYSQL_NUM);
+			$sql4="SELECT login_id FROM Login WHERE uname='$_POST[uname]'";
+			$result2=mysqli_query($con,$sql4);
+			$row2=mysqli_fetch_array($result2,MYSQL_NUM);
+			$user=$row2[0];
+			$order=$row1[0];
+			$sql3 = "INSERT INTO Buyer (buyer_id, order_id)
+			VALUES
+			('$user' , '$order')";
+			mysqli_query($con,$sql3);
+  			
+		 }
+		 else{
+			$_SESSION['Success'] = "Username does not exist or Password is Wrong!";
+
+			}
+			
+mysqli_close($con);
+echo "<script> window.history.go(-1); </script>";
+
+?>
