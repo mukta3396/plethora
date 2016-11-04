@@ -160,7 +160,7 @@ aria-expanded="false">KIDS<span class="caret"></span></a>
 						die('Could not connect: ' . mysql_error());
 					}
 					echo "<script>alert('$_SESSION[UserId]');</script>";
-					if($_SESSION['UserId']!="")
+					if($_SESSION['UserId']!=-1)
 					{
 					?><h2 align="center">Recommendations: </h2><?php
 					$statement='python main.py '.$_SESSION['UserId'];

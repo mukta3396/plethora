@@ -24,32 +24,6 @@
 	<style>
 		.error {color: #FF0000;}
 	</style>
-	<?php
-		$servername = "localhost";
-		$username = "root";
-		$password = "mukta3396";
-		$dbname = "plethora";
-
-		// Create connection
-		$conn = mysqli_connect($servername, $username, $password, $dbname);
-		// Check connection
-		if (!$conn) {
-			 die("Connection failed: " . mysqli_connect_error());
-		}
-
-		// sql to create table
-		$sql = "CREATE TABLE tempCart (
-		titem_id INT(10) PRIMARY KEY,
-		quantity INT(10) 
-		)";
-
-		if (mysqli_query($conn, $sql))
-		echo"<script> alert('done'); </script>";
-		else
-		echo "<script> alert('error'); </script>";
-
-		mysqli_close($conn);
-		?>
 	
     <div class="container">
 

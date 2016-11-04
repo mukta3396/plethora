@@ -51,9 +51,6 @@ fclose($f);
 $sql5= "DELETE * FROM tempCart";
 mysqli_query($con,$sql5);
 
-$sql6= "DROP TABLE tempCart";
-mysqli_query($con,$sql6);
-	
 mysqli_close($con);
 echo "<script> window.history.go(-2); </script>";
 

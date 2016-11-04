@@ -39,7 +39,8 @@
 
 		// sql to create table
 		$sql = "CREATE TABLE tempCart (
-		titem_id INT(10) PRIMARY KEY
+		titem_id INT(10) PRIMARY KEY,
+		rating INT(10),
 		quantity INT(10) 
 		)";
 

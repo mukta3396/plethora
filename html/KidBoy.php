@@ -317,7 +317,8 @@ aria-expanded="false">KIDS<span class="caret"></span></a>
                             </table>
                             <table>
                             <tr>
-                            <th> <input size="1" type="number" name="quantity" min="1" placeholder="Quantity"></th>
+                            <th> <input size="1" type="number" name="quantity" min="1" placeholder="Quantity"></th></tr>
+                            <tr> <th> <input size="1" type="number" name="rating" min="1" max="5" placeholder="Rating"></th></tr>
                             </table>
                             <table>
                             <tr>

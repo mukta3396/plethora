@@ -64,6 +64,7 @@
                         		<th>Title</th>
                         		<th>Price</th>
                         		<th>Quantity</th>
+                        		<th>Rating</th>
                         		<th>Total</th>
                         		</tr>
                         		 <?php
@@ -98,7 +99,7 @@
 								            			<div class="row-fluid">
 								            				<div class="span7">
 								            				   <?php echo $row['quantity']; ?>
-																	<input type="hidden" id="price" name="price" value="<?php $total=$total+($row['quantity']*(int)substr($row['price'],4)); echo (int)substr($row['price'],4); ?>">
+																	<input type="hidden" id="price" name="price" value="<?php $total=$total+($row['quantity']*$row['price']); echo $row['price']; ?>">
 																	
 								            					
 								            				</div>
@@ -106,7 +107,8 @@
 								            			</div>
 								            			
 								            		</td>
-								            		<td class="span1"><?php echo $row['quantity']*(int)substr($row['price'],4); ?></td>
+								            		<td class="span1"><?php echo $row['quantity']*$row['price']; ?></td>
+								            		<td class="span1"><?php echo $row['rating']; ?></td>
 								            	</tr>
 										  <?php }
 
