@@ -137,40 +137,40 @@
       	<div class="span6">
           <div class="block">
                 <div class="navbar navbar-inner block-header">
-                    <div class="muted pull-left"><h1>LOGIN!</div>
+                    <div class="muted pull-left"><h1>SHIPPING DETAILS!</div>
                 </div>
                 <div class="block-content collapse in">
                     <div class="span12">
                       <div class="alert alert-info"><span class="text-error">*</span> indicates required field</div>
                         <form class="form-horizontal" action="orderPlace.php" method="post">
                           <div class="control-group">
-                                <label for="uname">User Name</label>
+                                <label for="uname">User Name</label><br>
                                 <input type="text" id="uname" name="uname" value="" placeholder="User Name">
                                 <span class = "error"><?php session_start(); echo $_SESSION['UserNameError']; ?></span>
                           </div>
 
                           <div class="control-group">
-                                <label for="password">Password</label>
-                                <input type="text" id="password" name="password" value="" placeholder="Password">
+                                <label for="password">Password</label><br>
+                                <input type="password" id="password" name="password" value="" placeholder="Password">
                                 <span class = "error"><?php session_start(); echo $_SESSION['PasswordError']; ?></span>
                           </div>
 									<div class="control-group">
-                                <label for="street">Street Address <span class="text-error">*</span></label>
+                                <label for="street">Street Address <span class="text-error">*</span></label><br>
                                 <input type="text" name="street" value="" placeholder="Street Address">
                           </div>
 
                           <div class="control-group">
-                                <label for="city">City <span class="text-error">*</span></label>
+                                <label for="city">City <span class="text-error">*</span></label><br>
                                 <input type="text" name="city" value="" placeholder="City">
                           </div>
 
                           <div class="control-group">
-                                <label for="state">State/Province <span class="text-error">*</span></label>
+                                <label for="state">State/Province <span class="text-error">*</span></label><br>
                                 <input type="text" name="state" value="" placeholder="State">
                           </div>
 
                           <div class="control-group">
-                                <label for="zip">Postal Code <span class="text-error">*</span></label>
+                                <label for="zip">Postal Code <span class="text-error">*</span></label><br>
                                 <input type="text" name="zip" value="" placeholder="Postal Code">
                           </div>
                           <div class="control-group">

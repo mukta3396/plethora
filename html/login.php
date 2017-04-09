@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -48,50 +47,7 @@
       </div>
 
       <div class="row-fluid">
-      	<div class="span6">
-      		<div class="block">
-                <div class="navbar navbar-inner block-header">
-                    <div class="muted pull-left"><h1>SIGN UP</div>
-                </div>
-                <div class="block-content collapse in">
-                    <div class="span12">
-                    	<div class="alert alert-info"><span class="text-error">*</span> indicates required field</div>
-                        <form class="form-horizontal" action="signup.php" method="post">
-                          <div class="control-group">
-                                <label for="f_name">First Name <span class="text-error">*</span></label>
-                                <input type="text" name="f_name" value="" placeholder="First Name">
-                          </div>
-                          <div class="control-group">
-                                <label for="l_name">Last Name <span class="text-error">*</span></label>
-                                <input type="text" name="l_name" value="" placeholder="Last Name">
-                          </div>
-                           <div class="control-group">
-                                <label for="uname">User Name</label>
-                                <input type="text" name="uname" value="" placeholder="User Name">
-                                <span class = "error"><?php session_start(); echo $_SESSION['UserNameError']; ?></span>
-                          </div>
-
-                          <div class="control-group">
-                                <label for="password">Password</label>
-                                <input type="text" name="password" value="" placeholder="Password">
-                          </div>
-                          <div class="control-group">
-                                <label for="email">Email Address <span class="text-error">*</span></label>
-                                <input type="text" name="email" value="" placeholder="Email Address">
-                          </div>
-
-                          <div class="control-group">
-                                <label for="phone">Phone number <span class="text-error">*</span></label>
-                                <input type="text" name="phone" value="" placeholder="Phone Number" class="input-medium">
-                          </div>              
-                          <div class="control-group">
-						                   <button type="submit" id="signupButton">Submit</button>
-						               </div>
-                        </form>
-                    </div>
-                </div>
-            </div>
-      	</div>
+      	
       	<div class="span6">
       		<div class="block">
                 <div class="navbar navbar-inner block-header">
@@ -102,14 +58,14 @@
                     	<div class="alert alert-info"><span class="text-error">*</span> indicates required field</div>
                         <form class="form-horizontal" action="signin.php" method="post">
                           <div class="control-group">
-                                <label for="uname">User Name</label>
+                                <label for="uname">User Name</label><br>
                                 <input type="text" id="uname" name="uname" value="" placeholder="User Name">
                                 <span class = "error"><?php session_start(); echo $_SESSION['UserNameError']; ?></span>
                           </div>
 
                           <div class="control-group">
-                                <label for="password">Password</label>
-                                <input type="text" id="password" name="password" value="" placeholder="Password">
+                                <label for="password">Password</label><br>
+                                <input type="password" id="password" name="password" value="" placeholder="Password">
                                 <span class = "error"><?php session_start(); echo $_SESSION['PasswordError']; ?></span>
                           </div>
 
@@ -123,7 +79,50 @@
                     </div>
                 </div>
             </div>
-           
+           <div class="span6">
+      		<div class="block">
+                <div class="navbar navbar-inner block-header">
+                    <div class="muted pull-left"><h1>SIGN UP</div>
+                </div>
+                <div class="block-content collapse in">
+                    <div class="span12">
+                    	<div class="alert alert-info"><span class="text-error">*</span> indicates required field</div>
+                        <form class="form-horizontal" action="signup.php" method="post">
+                          <div class="control-group">
+                                <label for="f_name">First Name <span class="text-error">*</span></label><br>
+                                <input type="text" name="f_name" value="" placeholder="First Name">
+                          </div>
+                          <div class="control-group">
+                                <label for="l_name">Last Name <span class="text-error">*</span></label><br>
+                                <input type="text" name="l_name" value="" placeholder="Last Name">
+                          </div>
+                           <div class="control-group">
+                                <label for="uname">User Name</label><br>
+                                <input type="text" name="uname" value="" placeholder="User Name">
+                                <span class = "error"><?php session_start(); echo $_SESSION['UserNameError']; ?></span>
+                          </div>
+
+                          <div class="control-group">
+                                <label for="password">Password</label><br>
+                                <input type="password" name="password" value="" placeholder="Password">
+                          </div>
+                          <div class="control-group">
+                                <label for="email">Email Address <span class="text-error">*</span></label><br>
+                                <input type="text" name="email" value="" placeholder="Email Address">
+                          </div>
+
+                          <div class="control-group">
+                                <label for="phone">Phone number <span class="text-error">*</span></label><br>
+                                <input type="text" name="phone" value="" placeholder="Phone Number" class="input-medium">
+                          </div>              
+                          <div class="control-group">
+						                   <button type="submit" id="signupButton">Submit</button>
+						               </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+      	</div>
       	</div>
       </div>
 

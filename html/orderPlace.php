@@ -48,8 +48,7 @@ echo "<script>alert('$x');</script>";
 
 }
 fclose($f);
-$sql5= "DELETE * FROM tempCart";
-mysqli_query($con,$sql5);
+
 
 mysqli_close($con);
 echo "<script> window.history.go(-2); </script>";

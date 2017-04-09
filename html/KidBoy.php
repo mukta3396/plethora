@@ -89,7 +89,7 @@ aria-expanded="false">KIDS<span class="caret"></span></a>
               </li>
             </ul>
 		<div class="col-sm-3 col-md-3">
-        <form class="navbar-form" role="search">
+        <form class="navbar-form" action="semsol/test1.php" method="get">
         <div class="input-group">
             <input type="text" class="form-control" placeholder="Search" name="srch-term" id="srch-term">
             <div class="input-group-btn">
@@ -112,16 +112,15 @@ aria-expanded="false">KIDS<span class="caret"></span></a>
       <ol class="carousel-indicators">
         <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
         <li data-target="#myCarousel" data-slide-to="1"></li>
-        <li data-target="#myCarousel" data-slide-to="2"></li>
+
       </ol>
       <div class="carousel-inner" role="listbox">
         <div class="item active">
-          <img class="first-slide" src="carousel_discount.jpg" alt="First slide">
+          <img class="first-slide" src="carousel_discount3.jpg" alt="First slide">
           <div class="container">
             <div class="carousel-caption">
-              <h1>Example headline.</h1>
-              <p>Some pic of some chic.</p>
-              
+                  <p>Some discount offer.</p>	
+              		<p><a class="btn btn-lg btn-primary" href="#" role="button">Browse gallery</a></p>
             </div>
           </div>
         </div>
@@ -135,16 +134,7 @@ aria-expanded="false">KIDS<span class="caret"></span></a>
             </div>
           </div>
         </div>
-        <div class="item">
-          <img class="third-slide" src="carousel_discount3.jpg" alt="Third slide">
-          <div class="container">
-            <div class="carousel-caption">
-              <h1>Guess</h1>
-              <p>Some discount offer.</p>
-              <p><a class="btn btn-lg btn-primary" href="#" role="button">Browse gallery</a></p>
-            </div>
-          </div>
-        </div>
+     
       </div>
       <a class="left carousel-control" href="#myCarousel" role="button" data-slide="prev">
         <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
@@ -271,10 +261,10 @@ aria-expanded="false">KIDS<span class="caret"></span></a>
 						die('Could not connect: ' . mysql_error());
 					}
 					$category=$_SESSION['category'];
+						
 					if($_POST[ibrand_name] && $_POST[a]){
 					$minprice=$_POST[a]-500;
 					$maxprice=$_POST[a]+500;
-					echo "<script> alert('hello'); </script>";
 					$brand=$_POST[ibrand_name];
                $sql = "SELECT * from Item WHERE  price>='$minprice' and price<='$maxprice' and ibrand_name='$_POST[ibrand_name]' and cat_id='$_GET[category]'";
             
@@ -288,11 +278,12 @@ aria-expanded="false">KIDS<span class="caret"></span></a>
                
 					$minprice=$_POST[a]-500;
 					$maxprice=$_POST[a]+500;
-					echo "<script> alert($minprice); </script>";
                $sql = "SELECT * from Item WHERE price>='$minprice' and price<='$maxprice' and cat_id='$_GET[category]'";
                }
-               else
-					$sql = "SELECT * from Item WHERE cat_id='$_GET[category]' ";
+               else if ($_GET[category])
+               $sql = "SELECT * from Item WHERE  cat_id='$_GET[category]' ";
+               else 
+					$sql = "SELECT * from Item WHERE cat_id='$category'";
 
 					mysql_select_db('plethora');
 					$retval = mysql_query( $sql, $conn );
@@ -332,7 +323,7 @@ aria-expanded="false">KIDS<span class="caret"></span></a>
                     </div>
 				<?php }
 
-   mysql_close($conn);
+   mysql_close($conn); session_end();
 ?>
                    </div>
                   </div>

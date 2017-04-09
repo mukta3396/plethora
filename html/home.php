@@ -72,9 +72,10 @@ aria-expanded="false">KIDS<span class="caret"></span></a>
                  
                 </ul>
               </li>
+              
             </ul>
-		<div class="col-sm-3 col-md-3">
-        <form class="navbar-form" role="search">
+			<div class="col-sm-3 col-md-3">
+        <form class="navbar-form" role="search" action="semsol/test1.php" method="post">
         <div class="input-group">
             <input type="text" class="form-control" placeholder="Search" name="srch-term" id="srch-term">
             <div class="input-group-btn">
@@ -82,9 +83,10 @@ aria-expanded="false">KIDS<span class="caret"></span></a>
             </div>
         </div>
         </form>
+        
         </div>
             <ul class="nav navbar-nav navbar-right">
-             <li> <?php session_start(); echo $_SESSION['UserName']; ?></li>
+             <li style="color:#9c27b0;font-family:verdana;"> <?php session_start(); echo $_SESSION['UserName']; ?></li>
               <li><a href="login.php"> <img src="user.png" alt="User Icon" style="width:32px;height:32px;"> </a></li>
 		<li><a href="checkout.php"> <img src="cart.png" alt="Cart Icon" style="width:32px;height:32px;"> </a></li>
             </ul>
@@ -101,11 +103,11 @@ aria-expanded="false">KIDS<span class="caret"></span></a>
       </ol>
       <div class="carousel-inner" role="listbox">
         <div class="item active">
-          <img class="first-slide" src="carousel_discount.jpg" alt="First slide">
+          <img class="first-slide" src="discount1.jpg" alt="First slide">
           <div class="container">
             <div class="carousel-caption">
-              <h1>Example headline.</h1>
-              <p>Some pic of some chic.</p>
+              <h1>Fresh sales</h1>
+              <p>Best Discounts!</p>
               <p><a class="btn btn-lg btn-primary" href="#" role="button">Sign up today</a></p>
             </div>
           </div>
@@ -114,18 +116,18 @@ aria-expanded="false">KIDS<span class="caret"></span></a>
           <img class="second-slide" src="carousel_discount2.jpeg" alt="Second slide">
           <div class="container">
             <div class="carousel-caption">
-              <h1>LEVI'S</h1>
+              <h1>Best Brands</h1>
               <p>Comfort and style</p>
               <p><a class="btn btn-lg btn-primary" href="#" role="button">Learn more</a></p>
             </div>
           </div>
         </div>
         <div class="item">
-          <img class="third-slide" src="carousel_discount3.jpg" alt="Third slide">
+          <img class="third-slide" src="discount3.jpg" alt="Third slide">
           <div class="container">
             <div class="carousel-caption">
-              <h1>Guess</h1>
-              <p>Some discount offer.</p>
+              <h1>Lowest Prices</h1>
+             
               <p><a class="btn btn-lg btn-primary" href="#" role="button">Browse gallery</a></p>
             </div>
           </div>
@@ -159,12 +161,12 @@ aria-expanded="false">KIDS<span class="caret"></span></a>
 					if(! $conn ) {
 						die('Could not connect: ' . mysql_error());
 					}
-					echo "<script>alert('$_SESSION[UserId]');</script>";
+
 					if($_SESSION['UserId']>0 && $_SESSION['UserId']<944)
 					{
 					?><h2 align="center">Recommendations: </h2><?php
 					$statement='python main.py '.$_SESSION['UserId'];
-					echo "<script>alert('$statement');</script>";
+
 					$command=escapeshellcmd($statement);
 					$output=shell_exec($command);
 
@@ -184,7 +186,7 @@ aria-expanded="false">KIDS<span class="caret"></span></a>
 						die('Could not get data: ' . mysql_error());
 					}
 		
-					while($row = mysql_fetch_array($retval, MYSQL_ASSOC)) {
+					while($row = mysql_fetch_array($retval, MYSQL_ASSOC)) { 
 						?>
 					 <div class="col-sm-4 col-lg-4 col-md-4">
 							
@@ -200,7 +202,9 @@ aria-expanded="false">KIDS<span class="caret"></span></a>
                             </table>
                             <table>
                             <tr>
-                            <th> <input size="1" type="number" name="quantity" min="1" placeholder="Quantity"></th>
+                            <th> <input size="1" type="number" name="quantity" min="1" placeholder="Quantity"></th></tr>
+                            
+ 							 		 <tr> <th> <input size="1" type="number" name="rating" min="1" max="5" placeholder="Rating"></th></tr>
                             </table>
                             <table>
                             <tr>
