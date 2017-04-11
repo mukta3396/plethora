@@ -44,6 +44,13 @@
             <ul class="nav navbar-nav">
               <li class="active"><a href="#"> <img src="logo.png" alt="Plethora logo" style="width:180px;height:32px;"> </a></li>
               <li class="dropdown">
+                <a href="KidBoy.php?category=19" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">II HAND<span class="caret"></span></a>
+           			<ul class="dropdown-menu">
+                  <li><a href="KidBoy.php?category=19">Products</a></li>
+                 
+                </ul>
+    			</li>
+              <li class="dropdown">
                 <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" 
 aria-expanded="false">KIDS<span class="caret"></span></a>
                 <ul class="dropdown-menu">
@@ -101,6 +108,8 @@ aria-expanded="false">KIDS<span class="caret"></span></a>
         </div>
         <font size="6"><?php session_start();  if($_SESSION['UserName']!="")echo $_SESSION['UserName'], " Logged In!"; ?></font>
         <ul class="nav navbar-nav navbar-right"> 
+        			
+              	<li><a href="orderHistory.php"> <img src="order.png" alt="Order Icon" style="width:32px;height:32px;"> </a></li>
                 <li><a href="checkout.php"> <img src="cart.png" alt="Cart Icon" style="width:32px;height:32px;"> </a></li>
             </ul>
           </div><!--/.nav-collapse -->
@@ -292,7 +301,7 @@ aria-expanded="false">KIDS<span class="caret"></span></a>
 						die('Could not get data: ' . mysql_error());
 					}
 		
-					while($row = mysql_fetch_array($retval, MYSQL_ASSOC)) {
+					while($row = mysql_fetch_array($retval, MYSQL_ASSOC)) { if($_GET[category]!=19){
 						?>
 					 <div class="col-sm-4 col-lg-4 col-md-4">
 							
@@ -321,7 +330,40 @@ aria-expanded="false">KIDS<span class="caret"></span></a>
                             </tr></table>             
                         </div>
                     </div>
-				<?php }
+				<?php } 
+				else
+				{
+				 ?>
+				<div class="col-sm-4 col-lg-4 col-md-4">
+							
+                        <div class="thumbnail">
+                        <form method="post" action="addToCart.php">
+                            <?php 	echo '<img src="data:image/jpeg;base64,'.base64_encode( $row['picture'] ).'"/>'; ?>
+                            <input type="hidden" name="titem_id" value="<?php echo $row['item_id']; ?>">
+                            <table table-layout="fixed">
+                            <tr>
+                            <th height="100"><?php echo $row['item_name']; ?></th>
+                            <th><?php echo "Rs. ".$row['price']; ?></th>
+                            </tr>
+                            </table>
+                            <table>
+                            <tr>
+                            <th> <input size="1" type="number" name="quantity" min="1" placeholder="Quantity"></th></tr>
+                            <tr> <th> <input size="1" type="number" name="rating" min="1" max="5" placeholder="Rating"></th></tr>
+                            </table>
+                            <table>
+                            <tr>
+                            <th><input type="submit" value="Add to cart" class="btnAddAction" /></form> </th>
+                           	<th><form method="post" action="deleteFromCart.php">
+                           	 <input type="hidden" name="titem_id" value="<?php echo $row['item_id']; ?>">
+                        		<input type="submit" value="Delete" class="btnAddAction" />
+                        </form></th>
+                            </tr></table>             
+                        </div>
+                    </div>
+				<?php 
+				}
+				}
 
    mysql_close($conn); session_end();
 ?>

@@ -16,7 +16,7 @@ $result4=mysqli_query($con,$check);
 		 if($rowcount >0)
 		 {
   		 $_SESSION['UserNameError'] = "Username already taken!";
-		 echo "<script> window.history.go(-1); </script>";
+		 header('Location:  /plethora/html/login.php');
 		 }
 else{
 $sql1="SELECT customer_id FROM Customer ORDER BY customer_id DESC LIMIT 1";
@@ -30,18 +30,23 @@ if (!mysqli_query($con,$sql2))
 {
 echo "<script> window.history.go(-1); </script>";
 }
-
-$sql3 = "INSERT INTO Login (login_id, password, uname)
+if($_POST['type']=="Buyer")
+{
+$t="b";
+}
+else
+$t="s";
+$sql3 = "INSERT INTO Login (login_id, password, uname,bors)
 VALUES
-('$id' , '$_POST[password]','$_POST[uname]')";
+('$id' , '$_POST[password]','$_POST[uname]','$t')";
 if (!mysqli_query($con,$sql3))
 {
-echo "<script> window.history.go(-1); </script>";
+header('Location:  /plethora/html/home.php');
 }
 $_SESSION['UserID'] = $id;
 $_SESSION['UserName'] = $_POST[uname];
 mysqli_close($con);
-echo "<script> window.history.go(-2); </script>";
+header('Location:  /plethora/html/login.php');
 }
 ?>
 

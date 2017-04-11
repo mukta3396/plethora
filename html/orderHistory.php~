@@ -48,7 +48,7 @@
 
       <div class="row-fluid">
       	<div class="span12">
-      		<h1>Checkout</h1>
+      		<h1>Order History</h1>
       	</div>
       </div>
 		<form oninput="pricePerItem.value=parseInt(quantity.value)*parseInt(price.value)" method="post" >
@@ -67,6 +67,7 @@
                         		<th>Total</th>
                         		</tr>
                         		 <?php
+                        		 	 session_start();
 											 $dbhost = 'localhost';
 											 $dbuser = 'root';
 											 $dbpass = 'mukta3396';
@@ -77,16 +78,15 @@
 												die('Could not connect: ' . mysql_error());
 											 }
 								
-											 $sql = 'SELECT * from Item,tempCart WHERE Item.item_id = tempCart.titem_id';
+											 $sql = "SELECT * from Item,Cart WHERE Item.item_id = Cart.itemid and Cart.orderid in (select order_id from Buyer where buyer_id in (select login_id where uname= '$_SESSION[UserName]'))";
 
 											 mysql_select_db('plethora');
 											 $retval = mysql_query( $sql, $conn );
-									 
 											 if(! $retval ) {
 												die('Could not get data: ' . mysql_error());
 											 }
 									 		$total=0;
-											 while($row = mysql_fetch_array($retval, MYSQL_ASSOC)) {
+											 while($row = mysql_fetch_array($retval, MYSQL_ASSOC)) { if($row['cat_id']!=19){
 												?>
 											   
 								            	<tr>
@@ -109,7 +109,27 @@
 								            		<td class="span1"><?php echo $row['quantity']*$row['price']; ?></td>
 								            	</tr>
 										  <?php }
+										  else {?>
+										  <tr>
+								            		<td class="span1"><?php 	echo '<img src="data:image/jpeg;base64,'.base64_encode( $row['picture'] ).'"/>'; ?></td>
+								            		<td class="span5"><?php echo $row['item_name']; ?>
+								            		</td>
+								            		<td class="span2"><?php echo $row['price']; ?></td>
+								            		<td class="span2">
+								            			<div class="row-fluid">
+								            				<div class="span7">
+								            				   <?php echo $row['quantity']; ?>
+																	<input type="hidden" id="price" name="price" value="<?php $total=$total+($row['quantity']*$row['price']); echo $row['price']; ?>">
+																	
+								            					
+								            				</div>
 
+								            			</div>
+								            			
+								            		</td>
+								            		<td class="span1"><?php echo $row['quantity']*$row['price']; ?></td>
+								            	</tr>
+										<?php }}
 									mysql_close($conn);
 								?>
 								<tr>
@@ -133,59 +153,6 @@
       </div>
    </form>
 
-      <div class="row-fluid">
-      	<div class="span6">
-          <div class="block">
-                <div class="navbar navbar-inner block-header">
-                    <div class="muted pull-left"><h1>SHIPPING DETAILS!</div>
-                </div>
-                <div class="block-content collapse in">
-                    <div class="span12">
-                      <div class="alert alert-info"><span class="text-error">*</span> indicates required field</div>
-                        <form class="form-horizontal" action="orderPlace.php" method="post">
-                          <div class="control-group">
-                                <label for="uname">User Name</label><br>
-                                <input type="text" id="uname" name="uname" value="" placeholder="User Name">
-                                <span class = "error"><?php session_start(); echo $_SESSION['UserNameError']; ?></span>
-                          </div>
-
-                          <div class="control-group">
-                                <label for="password">Password</label><br>
-                                <input type="password" id="password" name="password" value="" placeholder="Password">
-                                <span class = "error"><?php session_start(); echo $_SESSION['PasswordError']; ?></span>
-                          </div>
-									<div class="control-group">
-                                <label for="street">Street Address <span class="text-error">*</span></label><br>
-                                <input type="text" name="street" value="" placeholder="Street Address">
-                          </div>
-
-                          <div class="control-group">
-                                <label for="city">City <span class="text-error">*</span></label><br>
-                                <input type="text" name="city" value="" placeholder="City">
-                          </div>
-
-                          <div class="control-group">
-                                <label for="state">State/Province <span class="text-error">*</span></label><br>
-                                <input type="text" name="state" value="" placeholder="State">
-                          </div>
-
-                          <div class="control-group">
-                                <label for="zip">Postal Code <span class="text-error">*</span></label><br>
-                                <input type="text" name="zip" value="" placeholder="Postal Code">
-                          </div>
-                          <div class="control-group">
-                <div class="controls">
-                <span class = "error"><?php session_start(); echo $_SESSION['Success']; $_SESSION['Success']=""; ?></span>
-                  <button type="submit" class="btn btn-primary">Submit</button>
-                </div>
-              </div>
-                        </form>
-                    </div>
-                </div>
-            </div>
-      	</div>
-
-      </div>
 
       <hr>
 

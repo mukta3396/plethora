@@ -20,12 +20,12 @@ $row=mysqli_fetch_array($result4,MYSQL_NUM);
 		 if($rowcount >0)
 		 {
   		 $_SESSION['UserName']=$_POST[uname];
-		 $_SESSION['UserId'] = ;
-		 echo "<script> window.history.go(-2); </script>";
+		 $_SESSION['UserId'] = $row[0];
+		 header('Location:  /plethora/html/home.php');
 		 }
 else{
 $_SESSION['Success'] = "Username does not exist or Password is Wrong!";
 mysqli_close($con);
-echo "<script> window.history.go(-1); </script>";
+header('Location:  /plethora/html/login.php');
 }
 ?>

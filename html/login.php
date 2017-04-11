@@ -41,6 +41,7 @@
             <ul class="nav navbar-nav">
               <li class="active"><a href="#"> <img src="logo.png" alt="Plethora logo" style="width:180px;height:32px;"> </a></li>             
                 <li><a href="home.php">Go Back to Home</a></li>
+                <li><a href="logout.php">Logout <img src="logout.png" alt="Logout Icon" style="width:20px;height:20px;"> </a></li>
 
             </ul>
           </div><!-- /.navbar -->
@@ -88,6 +89,10 @@
                     <div class="span12">
                     	<div class="alert alert-info"><span class="text-error">*</span> indicates required field</div>
                         <form class="form-horizontal" action="signup.php" method="post">
+                          <div class="control-group">
+                                <label for="type">Customer <span class="text-error">*</span></label><br>
+                                <input type="text" name="type" value="" placeholder="Buyer/Seller">
+                          </div>
                           <div class="control-group">
                                 <label for="f_name">First Name <span class="text-error">*</span></label><br>
                                 <input type="text" name="f_name" value="" placeholder="First Name">

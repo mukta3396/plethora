@@ -28,6 +28,13 @@
          <div id="navbar" class="navbar-collapse collapse">
             <ul class="nav navbar-nav">
               <li class="active"><a href="#"> <img src="logo.png" alt="Plethora logo" style="width:180px;height:32px;"> </a></li>
+                  <li class="dropdown">
+                <a href="KidBoy.php?category=19" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">II HAND<span class="caret"></span></a>
+           			<ul class="dropdown-menu">
+                  <li><a href="KidBoy.php?category=19">Products</a></li>
+                 
+                </ul>
+    			</li>
               <li class="dropdown">
                 <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" 
 aria-expanded="false">KIDS<span class="caret"></span></a>
@@ -86,8 +93,9 @@ aria-expanded="false">KIDS<span class="caret"></span></a>
         
         </div>
             <ul class="nav navbar-nav navbar-right">
-             <li style="color:#9c27b0;font-family:verdana;"> <?php session_start(); echo $_SESSION['UserName']; ?></li>
+             <li style="color:#9c27b0;font-family:verdana;"><a href="logout.php"> <?php session_start(); echo $_SESSION['UserName']; ?></a></li>
               <li><a href="login.php"> <img src="user.png" alt="User Icon" style="width:32px;height:32px;"> </a></li>
+              	<li><a href="orderHistory.php"> <img src="order.png" alt="Order Icon" style="width:32px;height:32px;"> </a></li>
 		<li><a href="checkout.php"> <img src="cart.png" alt="Cart Icon" style="width:32px;height:32px;"> </a></li>
             </ul>
           </div><!--/.nav-collapse -->

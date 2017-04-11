@@ -86,7 +86,7 @@
 												die('Could not get data: ' . mysql_error());
 											 }
 									 		$total=0;
-											 while($row = mysql_fetch_array($retval, MYSQL_ASSOC)) {
+											 while($row = mysql_fetch_array($retval, MYSQL_ASSOC)) { if($row['cat_id']!=19){
 												?>
 											   
 								            	<tr>
@@ -109,7 +109,27 @@
 								            		<td class="span1"><?php echo $row['quantity']*$row['price']; ?></td>
 								            	</tr>
 										  <?php }
+										  else {?>
+										  <tr>
+								            		<td class="span1"><?php 	echo '<img src="data:image/jpeg;base64,'.base64_encode( $row['picture'] ).'"/>'; ?></td>
+								            		<td class="span5"><?php echo $row['item_name']; ?>
+								            		</td>
+								            		<td class="span2"><?php echo $row['price']; ?></td>
+								            		<td class="span2">
+								            			<div class="row-fluid">
+								            				<div class="span7">
+								            				   <?php echo $row['quantity']; ?>
+																	<input type="hidden" id="price" name="price" value="<?php $total=$total+($row['quantity']*$row['price']); echo $row['price']; ?>">
+																	
+								            					
+								            				</div>
 
+								            			</div>
+								            			
+								            		</td>
+								            		<td class="span1"><?php echo $row['quantity']*$row['price']; ?></td>
+								            	</tr>
+										<?php }}
 									mysql_close($conn);
 								?>
 								<tr>

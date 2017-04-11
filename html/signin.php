@@ -21,11 +21,18 @@ $row=mysqli_fetch_array($result4,MYSQL_NUM);
 		 {
   		 $_SESSION['UserName']=$_POST[uname];
 		 $_SESSION['UserId'] = $row[0];
-		 echo "<script> window.history.go(-2); </script>";
+		 if($row[3]=="b")
+		 {
+		 header('Location:  /plethora/html/home.php');
+		 }
+		 else
+		 {
+		 header('Location:  /plethora/html/seller.php');
+		 }
 		 }
 else{
 $_SESSION['Success'] = "Username does not exist or Password is Wrong!";
 mysqli_close($con);
-echo "<script> window.history.go(-1); </script>";
+header('Location:  /plethora/html/login.php');
 }
 ?>
